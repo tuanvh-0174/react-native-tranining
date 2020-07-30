@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     gettingStyle: {
         fontSize: 20
     },
+
     myNameStyle: {
         fontSize:15
     },
