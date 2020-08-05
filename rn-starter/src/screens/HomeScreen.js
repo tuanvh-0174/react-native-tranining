@@ -46,6 +46,13 @@ const HomeScreen = (props) => {
             color="green"
             onPress = { () => props.navigation.navigate('SquareReducerScreen') }
           />
+
+        <Button
+            title="Go to Text Screen "
+            color=""
+            onPress = { () => props.navigation.navigate('TextScreen') }
+          />
+
     </View>
   );
 };
