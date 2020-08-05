@@ -10,36 +10,42 @@ const HomeScreen = (props) => {
         <Button
             title = "Go to components screen"
             onPress = { () => props.navigation.navigate('ComponentsScreen')}
-            ></Button>
+        />
 
-            <Button
-              title="Go to List screen"
-              color="#841584"
-              onPress = { () => props.navigation.navigate('ListScreen') }
-            />
+        <Button
+            title="Go to List screen"
+            color="#841584"
+            onPress = { () => props.navigation.navigate('ListScreen') }
+        />
 
-            <Button
-              title="Go to Image screen"
-              color="green"
-              onPress = { () => props.navigation.navigate('ImageScreen') }
-            />
+        <Button
+            title="Go to Image screen"
+            color="green"
+            onPress = { () => props.navigation.navigate('ImageScreen') }
+        />
 
-            <Button
-              title="Go to Counter screen"
-              onPress = { () => props.navigation.navigate('CounterScreen') }
-             />
+        <Button
+            title="Go to Counter screen"
+            onPress = { () => props.navigation.navigate('CounterScreen') }
+         />
 
-             <Button
-               title="Go to Color screen"
-               color="pink"
-               onPress = { () => props.navigation.navigate('ColorScreen') }
-              />
+        <Button
+            title="Go to Color screen"
+            color="pink"
+            onPress = { () => props.navigation.navigate('ColorScreen') }
+         />
 
-              <Button
-                 title="Go to Square screen"
-                 color="blue"
-                 onPress = { () => props.navigation.navigate('SquareScreen') }
-              />
+        <Button
+            title="Go to Square  screen "
+            color="#ccc"
+            onPress = { () => props.navigation.navigate('SquareScreen') }
+          />
+
+        <Button
+            title="Go to SquareReducer screen "
+            color="green"
+            onPress = { () => props.navigation.navigate('SquareReducerScreen') }
+          />
     </View>
   );
 };
