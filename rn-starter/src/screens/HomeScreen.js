@@ -53,6 +53,12 @@ const HomeScreen = (props) => {
             onPress = { () => props.navigation.navigate('TextScreen') }
           />
 
+        <Button
+            title="Go to Box Screen "
+            color="red"
+            onPress = { () => props.navigation.navigate('BoxScreen') }
+          />
+
     </View>
   );
 };
