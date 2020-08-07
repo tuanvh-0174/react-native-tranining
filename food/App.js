@@ -1,3 +1,21 @@
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import SearchScreen from './src/screens/SearchScreen';
+
+const navigator = createStackNavigator(
+{
+    Search: SearchScreen,
+},
+{
+    initialRouteName: 'Search',
+    defaultNavigationOptions: {
+        title: 'Home xxx'
+    }
+}
+);
+
+export default createAppContainer(navigator);
+
+/*
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -18,4 +36,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})*/
