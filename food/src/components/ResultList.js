@@ -1,18 +1,20 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList } from 'react-native';
+import ResultDetail from '../components/ResultDetail';
 
 const ResultList = ({ title, results }) => {
     console.log('resultList-item');
     return (
         <View>
-            <Text style={styles.titleStyle}> {title} </Text>
-            <Text>Results: {results.length} </Text>
+            <Text style={styles.titleStyle}> {title}</Text>
+            <Text style={styles.count}>(Results: {results.length})</Text>
+
             <FlatList
-                horizontal={true}
+                horizontal // show item theo hang ngang (default = false: show doc)
                 data={results}
                 keyExtractor={(result) => result.id}
                 renderItem={({ item }) => {
-                    return <Text>{ item.name }</Text>
+                    return <ResultDetail item={item} />;
                 }}
             />
         </View>
@@ -21,8 +23,14 @@ const ResultList = ({ title, results }) => {
 
 const styles = StyleSheet.create({
     titleStyle: {
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: 'bold',
+        marginLeft: 5,
+        marginTop: 5,
+        marginBottom: 5
+    },
+    count: {
+        marginLeft: 10
     },
 });
 

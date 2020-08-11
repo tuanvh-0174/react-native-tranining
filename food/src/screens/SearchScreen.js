@@ -24,7 +24,7 @@ const SearchScreen = (props) => {
                 term={term}
                 onTermChange={setTerm}
                 onTermSubmit={() => searchApi(term)}
-                 />
+             />
 
             <Text>{term}</Text>
 
