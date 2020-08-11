@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, ScrollView} from 'react-native';
 import SearchBar from './SearchBar';
 import yelp from '../api/yelp';
 import useResults from '../hooks/useResults';
@@ -19,7 +19,8 @@ const SearchScreen = (props) => {
 
 
     return (
-        <View>
+        // flex: set scroll for android
+        <View style={{ flex: 1}}>
             <SearchBar
                 term={term}
                 onTermChange={setTerm}
@@ -31,9 +32,11 @@ const SearchScreen = (props) => {
             { errorMessage ? <Text>{errorMessage}</Text> : null }
             <Text>We have found {results.length} results</Text>
 
-            <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
-            <ResultList results={filterResultsByPrice('$$')} title = "Title category 2" />
-            <ResultList results={filterResultsByPrice('$$')} title = "Title category 3" />
+            <ScrollView>
+                <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
+                <ResultList results={filterResultsByPrice('$$')} title = "Title category 2" />
+                <ResultList results={filterResultsByPrice('$$')} title = "Title category 3" />
+            </ScrollView>
 
             <Button
                 title="Go to Home"

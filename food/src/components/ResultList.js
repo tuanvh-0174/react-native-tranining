@@ -11,6 +11,7 @@ const ResultList = ({ title, results }) => {
 
             <FlatList
                 horizontal // show item theo hang ngang (default = false: show doc)
+                showsHorizontalScrollIndicator={false}
                 data={results}
                 keyExtractor={(result) => result.id}
                 renderItem={({ item }) => {
@@ -33,6 +34,5 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
 });
-
 
 export default ResultList;
