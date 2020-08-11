@@ -8,9 +8,15 @@ import ResultList from '../components/ResultList';
 
 const SearchScreen = (props) => {
     const [term, setTerm] = useState('');
-    const [searchApi, results, errorMessage] = useState();
-    // code here, 4.show search result
-    //console.log(results);
+    const [searchApi, results, errorMessage] = useResults();
+
+    const filterResultsByPrice = (price) => {
+        //  price == $ || $$ || $$$
+        return results.filter(result => {
+            return result.price === price;
+        })
+    };
+
 
     return (
         <View>
@@ -21,17 +27,18 @@ const SearchScreen = (props) => {
                  />
 
             <Text>{term}</Text>
+
             { errorMessage ? <Text>{errorMessage}</Text> : null }
             <Text>We have found {results.length} results</Text>
 
-            <ResultList title = "Title1" />
-            <ResultList title = "Title2" />
-            <ResultList title = "Title2" />
+            <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
+            <ResultList results={filterResultsByPrice('$$')} title = "Title category 2" />
+            <ResultList results={filterResultsByPrice('$$')} title = "Title category 3" />
 
             <Button
                 title="Go to Home"
                 onPress={() => props.navigation.navigate('Home')}
-                />
+            />
 
 
         </View>
