@@ -7,6 +7,7 @@ import ResultList from '../components/ResultList';
 
 
 const SearchScreen = (props) => {
+console.log(props);
     const [term, setTerm] = useState('');
     const [searchApi, results, errorMessage] = useResults();
 
@@ -33,17 +34,15 @@ const SearchScreen = (props) => {
             <Text>We have found {results.length} results</Text>
 
             <ScrollView>
-                <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
-                <ResultList results={filterResultsByPrice('$$')} title = "Title category 2" />
-                <ResultList results={filterResultsByPrice('$$')} title = "Title category 3" />
+                <ResultList navigation={props.navigation} results={filterResultsByPrice('$')} title = "Title category 1" />
+                <ResultList navigation={props.navigation} results={filterResultsByPrice('$$')} title = "Title category 2" />
+                <ResultList navigation={props.navigation} results={filterResultsByPrice('$$')} title = "Title category 3" />
             </ScrollView>
 
             <Button
                 title="Go to Home"
                 onPress={() => props.navigation.navigate('Home')}
-            />
-
-
+                />
         </View>
     );
 
