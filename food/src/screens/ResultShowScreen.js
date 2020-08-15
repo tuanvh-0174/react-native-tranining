@@ -1,10 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-const ResultShowScreen = () => {
+const ResultShowScreen = ({ navigation }) => {
     return (
-        <View><Text>AAAAA</Text></View>
-    );
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Home screen</Text>
+
+          <Button
+            title="Go to Profile"
+            onPress={() => navigation.navigate('Profile')}
+          />
+        </View>
+      );
 };
 
 const styles = StyleSheet.create({

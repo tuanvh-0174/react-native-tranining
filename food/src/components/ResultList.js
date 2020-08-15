@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity, Button } from 'react-native';
 import ResultDetail from '../components/ResultDetail';
-import ResultShowScreen from '../screens/ResultShowScreen';
 
 const ResultList = ({ title, results, navigation}) => {
     console.log('resultList-item');
@@ -18,16 +17,19 @@ const ResultList = ({ title, results, navigation}) => {
                 keyExtractor={(result) => result.id}
                 renderItem={({ item }) => {
                     return (
-
-                        <TouchableOpacity onPress={() => navigation.navigate( 'detail', { screen: 'ResultShowScreen'})}>
-                            <ResultDetail item={item} />
-                        </TouchableOpacity>
+                            <TouchableOpacity
+                                      onPress={() => navigation.navigate('Detail_product')}
+                            >
+                                <ResultDetail item={item} />
+                            </TouchableOpacity>
                     );
                 }}
             />
         </View>
     );
 };
+//                        <ResultDetail item={item} />
+
 
 const styles = StyleSheet.create({
     titleStyle: {
