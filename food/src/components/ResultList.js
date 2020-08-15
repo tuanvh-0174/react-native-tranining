@@ -1,9 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity, Button } from 'react-native';
 import ResultDetail from '../components/ResultDetail';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
-const ResultList = ({ title, results, navigation}) => {
+const ResultList = ({ title, results}) => {
     console.log('resultList-item');
+    const navigation = useNavigation();
     console.log(navigation);
     return (
         <View>

@@ -34,9 +34,9 @@ console.log(props);
             <Text>We have found {results.length} results</Text>
 
             <ScrollView>
-                <ResultList navigation={props.navigation} results={filterResultsByPrice('$')} title = "Title category 1" />
-                <ResultList navigation={props.navigation} results={filterResultsByPrice('$$')} title = "Title category 2" />
-                <ResultList navigation={props.navigation} results={filterResultsByPrice('$$')} title = "Title category 3" />
+                <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
+                <ResultList results={filterResultsByPrice('$$')} title = "Title category 2" />
+                <ResultList results={filterResultsByPrice('$$')} title = "Title category 3" />
             </ScrollView>
 
             <Button
