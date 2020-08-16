@@ -1,49 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import SearchBar from './SearchBar';
 import yelp from '../api/yelp';
+import useResults from '../hooks/useResults';
+import ResultList from '../components/ResultList';
+
 
 const SearchScreen = (props) => {
     const [term, setTerm] = useState('');
-    const [results, setResults] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
-    const searchApi = async (searchTerm) => {
-        console.log('Hi there !');
-        try {
-            const response = await yelp.get('/search', {
-                params: {
-                    limit: 50, // search?limit=50.
-                    term: term,
-                    location: 'san jose'
-                }
-            });
-            setResults(response.data.businesses);
-        } catch (err) {
-            console.log(err);
-            setErrorMessage('Something went wrong');
-        }
+    const [searchApi, results, errorMessage] = useResults();
+
+    const filterResultsByPrice = (price) => {
+        //  price == $ || $$ || $$$
+        return results.filter(result => {
+            return result.price === price;
+        })
     };
 
-    // Call SearchApi when component
-    // is first rendered
-//    searchApi('food');
 
     return (
         <View>
             <SearchBar
                 term={term}
                 onTermChange={setTerm}
-                onTermSubmit={searchApi(term)}
+                onTermSubmit={() => searchApi(term)}
                  />
 
             <Text>{term}</Text>
+
             { errorMessage ? <Text>{errorMessage}</Text> : null }
             <Text>We have found {results.length} results</Text>
+
+            <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
+            <ResultList results={filterResultsByPrice('$$')} title = "Title category 2" />
+            <ResultList results={filterResultsByPrice('$$')} title = "Title category 3" />
 
             <Button
                 title="Go to Home"
                 onPress={() => props.navigation.navigate('Home')}
-                />
+            />
 
 
         </View>
