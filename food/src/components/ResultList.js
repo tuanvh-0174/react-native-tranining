@@ -8,6 +8,12 @@ const ResultList = ({ title, results}) => {
     console.log('resultList-item');
     const navigation = useNavigation();
     console.log(navigation);
+
+    if (!results.length) {
+        return null;
+    }
+
+
     return (
         <View>
             <Text style={styles.titleStyle}> {title}</Text>
@@ -21,7 +27,7 @@ const ResultList = ({ title, results}) => {
                 renderItem={({ item }) => {
                     return (
                             <TouchableOpacity
-                                      onPress={() => navigation.navigate('Detail_product')}
+                                      onPress={() => navigation.navigate('Detail_product', {id: item.id})}
                             >
                                 <ResultDetail item={item} />
                             </TouchableOpacity>

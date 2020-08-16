@@ -62,7 +62,18 @@ function App() {
 
         <Stack.Screen
              name="Detail_product"
-             component={ResultShowScreen} />
+             component={ResultShowScreen}
+             options={{
+                   title: 'Detail',
+                   headerStyle: {
+                     backgroundColor: '#f4511e',
+                   },
+                   headerTintColor: '#fff',
+                   headerTitleStyle: {
+                     fontWeight: 'bold',
+                   },
+              }}
+          />
 
 
       </Stack.Navigator>

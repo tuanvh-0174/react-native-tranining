@@ -28,10 +28,9 @@ console.log(props);
                 onTermSubmit={() => searchApi(term)}
              />
 
-            <Text>{term}</Text>
 
             { errorMessage ? <Text>{errorMessage}</Text> : null }
-            <Text>We have found {results.length} results</Text>
+            <Text style={{ paddingLeft: 15 }}>We have found {results.length} results</Text>
 
             <ScrollView>
                 <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
