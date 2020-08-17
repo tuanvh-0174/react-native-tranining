@@ -30,7 +30,7 @@ export default () => {
 
     useEffect(() => {
         console.log('useEffect');
-        searchApi('food');
+        searchApi('vietnam');
     }, []);
 
 

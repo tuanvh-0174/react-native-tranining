@@ -3,7 +3,7 @@ import { View, Button, Text, Animated } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SearchScreen from './src/screens/SearchScreen';
-
+import ResultShowScreen from './src/screens/ResultShowScreen';
 
 // In App.js in a new project
 function Home({ navigation }) {
@@ -58,6 +58,23 @@ function App() {
         <Stack.Screen
             name="Profile"
             component={Profile} />
+
+
+        <Stack.Screen
+             name="Detail_product"
+             component={ResultShowScreen}
+             options={{
+                   title: 'Detail',
+                   headerStyle: {
+                     backgroundColor: '#f4511e',
+                   },
+                   headerTintColor: '#fff',
+                   headerTitleStyle: {
+                     fontWeight: 'bold',
+                   },
+              }}
+          />
+
 
       </Stack.Navigator>
     </NavigationContainer>
