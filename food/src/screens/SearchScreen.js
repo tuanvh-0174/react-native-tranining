@@ -9,7 +9,7 @@ import ResultList from '../components/ResultList';
 const SearchScreen = (props) => {
 console.log(props);
     const [term, setTerm] = useState('');
-    const [searchApi, results, errorMessage] = useResults();
+    const [searchApi, results, errorMessage, loading] = useResults();
 
     const filterResultsByPrice = (price) => {
         //  price == $ || $$ || $$$
@@ -25,12 +25,18 @@ console.log(props);
             <SearchBar
                 term={term}
                 onTermChange={setTerm}
-                onTermSubmit={() => searchApi(term)}
+                onTermSubmit={() => {
+                        searchApi(term);
+                    }
+                }
              />
 
 
+            { loading
+                ? <Text style={{ paddingLeft: 15, color: 'green' }}>Please wait...</Text>
+                : <Text style={{ paddingLeft: 15 }}>We have found {results.length} results</Text> }
+
             { errorMessage ? <Text>{errorMessage}</Text> : null }
-            <Text style={{ paddingLeft: 15 }}>We have found {results.length} results</Text>
 
             <ScrollView>
                 <ResultList results={filterResultsByPrice('$')} title = "Title category 1" />
