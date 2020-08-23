@@ -18,7 +18,6 @@ console.log(props);
         })
     };
 
-
     return (
         // flex: set scroll for android
         <View style={{ flex: 1}}>

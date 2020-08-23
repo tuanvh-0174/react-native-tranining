@@ -21,7 +21,7 @@ export default class App extends Component {
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <Text onPress={() => this.props.navigation.navigate('Profile')} style={{ backgroundColor: 'red', flex: 1, textAlignVertical: 'center', textAlign: 'center' }}> ICON 1</Text>
             <Text onPress={() =>  this.props.navigation.navigate('Search')} style={{ backgroundColor: 'pink', flex: 1, textAlignVertical: 'center', textAlign: 'center' }}> YELP</Text>
-            <Text style={{ backgroundColor: 'green', flex: 1, textAlignVertical: 'center', textAlign: 'center' }}>ICON 3 </Text>
+            <Text onPress={() => this.props.navigation.navigate('Blog')} style={{ backgroundColor: 'green', flex: 1, textAlignVertical: 'center', textAlign: 'center' }}>BLOG </Text>
           </View>
 
           <View style={{ flex: 1, flexDirection: 'row' }}>
