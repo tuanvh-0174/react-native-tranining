@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SearchScreen from './src/screens/SearchScreen';
 import ResultShowScreen from './src/screens/ResultShowScreen';
 import Home from './src/screens/HomeScreen';
+import BlogScreen from './src/screens/BlogScreen';
 
 // In App.js in a new project
 function Profile({ navigation }) {
@@ -69,7 +70,10 @@ function App() {
               }}
           />
 
-
+        <Stack.Screen
+            name="Blog"
+            component={BlogScreen}
+            />
       </Stack.Navigator>
     </NavigationContainer>
   );
