@@ -3,6 +3,15 @@ import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
 import BlogContext from '../context/BlogContext';
 import { BlogProvider } from '../context/BlogContext';
 
+const blogReducer = (state, action) => {
+    switch (action.type) {
+        case 'add_blogpost':
+            return [...state, { title: `Blog Post #${state.length+1}`} ]
+        default:
+            return state;
+    }
+};
+
 const BlogScreen = () => {
     // const value = useContext(BlogContext);
     const data = [
@@ -10,11 +19,16 @@ const BlogScreen = () => {
         {title: 'Blog Post #2'}
     ];
 
-    const [blogPosts, setBlogPosts] = useState(data);
+//    const [blogPosts, setBlogPosts] = useState(data);
+    const [blogPosts, dispatch] = useReducer(blogReducer, []);
+
+//    const addBlogPost = () => {
+//        setBlogPosts([...blogPosts, { title: `Blog Post #${blogPosts.length+1}`}]);
+//    };
 
     const addBlogPost = () => {
-        setBlogPosts([...blogPosts, { title: `Blog Post #${blogPosts.length+1}`}]);
-    };
+        dispatch({type: 'add_blogpost'});
+    }
 
     const editPost = () => {
 
