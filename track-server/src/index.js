@@ -1,9 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouters = require('./routes/authRoutes');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 app.use(authRouters);
+app.use(bodyParser.json());
+
 const mongoUri = 'mongodb+srv://mogoadmin:mYIpUnlw6tlVrhtt@cluster0.q80w7.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
