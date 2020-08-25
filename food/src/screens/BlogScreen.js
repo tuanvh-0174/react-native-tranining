@@ -1,12 +1,21 @@
 import React, { useState, useContext, useReducer } from 'react';
-import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native';
 import BlogContext from '../context/BlogContext';
 import { BlogProvider } from '../context/BlogContext';
+import { Feather } from '@expo/vector-icons';
 
 const blogReducer = (state, action) => {
     switch (action.type) {
         case 'add_blogpost':
-            return [...state, { title: `Blog Post #${state.length+1}`} ]
+            return [
+                ...state,
+                {
+                    id: Math.floor(Math.random() * 9999),
+                    title: `Blog Post #${state.length+1}`
+                }
+            ]
+        case 'delete_blogpost':
+            return state.filter((blogPosts) => blogPosts.id !== action.payload)
         default:
             return state;
     }
@@ -14,10 +23,10 @@ const blogReducer = (state, action) => {
 
 const BlogScreen = () => {
     // const value = useContext(BlogContext);
-    const data = [
-        {title: 'Blog Post #1'},
-        {title: 'Blog Post #2'}
-    ];
+//    const data = [
+//        {title: 'Blog Post #1'},
+//        {title: 'Blog Post #2'}
+//    ];
 
 //    const [blogPosts, setBlogPosts] = useState(data);
     const [blogPosts, dispatch] = useReducer(blogReducer, []);
@@ -35,7 +44,7 @@ const BlogScreen = () => {
     };
 
     const deletePost = () => {
-
+        dispatch({ type: 'delete_blogpost', payload: id });
     };
 
     return (
@@ -46,7 +55,12 @@ const BlogScreen = () => {
                 data={blogPosts}
                 keyExtractor={blogPosts => blogPosts.title}
                 renderItem={({item}) => {
-                    return <Text>{ item.title }</Text>
+                    return <View style={styles.row}>
+                        <Text style={styles.title}>{ item.title } - {item.id}</Text>
+                        <TouchableOpacity onPress={() => deletePost(item.id)}>
+                            <Feather style={styles.icon} name="trash" />
+                        </TouchableOpacity>
+                    </View>
                 }}
                 />
 
@@ -73,7 +87,20 @@ class ThemedButton extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        borderTopWidth: 1,
+        borderColor: 'gray',
+    },
+    title: {
+        fontSize: 18
+    },
+    icon: {
+        fontSize: 24
+    }
 });
 
 export default BlogScreen;
