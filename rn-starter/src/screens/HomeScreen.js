@@ -25,9 +25,14 @@ const HomeScreen = (props) => {
         />
 
         <Button
-            title="Go to Counter screen"
+            title="Go to Counter screen (1)"
             onPress = { () => props.navigation.navigate('CounterScreen') }
          />
+
+         <Button
+             title="Go to Counter Reducer screen (2)"
+             onPress = { () => props.navigation.navigate('CounterReducerScreen') }
+           />
 
         <Button
             title="Go to Color screen"
@@ -36,13 +41,13 @@ const HomeScreen = (props) => {
          />
 
         <Button
-            title="Go to Square  screen "
-            color="#ccc"
+            title="Go to Square  screen (1)"
+            color="green"
             onPress = { () => props.navigation.navigate('SquareScreen') }
           />
 
         <Button
-            title="Go to SquareReducer screen "
+            title="Go to SquareReducer screen (2)"
             color="green"
             onPress = { () => props.navigation.navigate('SquareReducerScreen') }
           />
